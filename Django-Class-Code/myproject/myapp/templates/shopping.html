@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- make a hiperlink to each product name and if i click on it it will show the details of that product and imaeg also  -->
+    {% for item in products %}
+        <a href="{% url 'shoppingdetails' product_id=forloop.counter %}">{{ item.name }}</a><br>
+    {% endfor %}
+        
+</body>
+</html>

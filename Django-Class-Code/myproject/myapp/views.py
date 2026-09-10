@@ -423,3 +423,36 @@ def productlist(request):
         
     ]
     return render(request, 'products.html', {'products': products})
+
+
+# shoping list 
+# this is like this image and name show if i click on it it will show the details of that product
+
+def shoppinglist(request):
+    products = [
+        {'name': 'Product 1','brand':'Brand 1', 'price': 10.99, 'image': 'images/f2.jpg'},
+        {'name': 'Product 2', 'brand':'Brand 2', 'price': 19.99, 'image': 'images/ff2.jpg'},
+        {'name': 'Product 3', 'brand':'Brand 3', 'price': 5.99, 'image': 'images/l.jpg'},
+        {'name': 'Product 4', 'brand':'Brand 4', 'price': 15.99, 'image': 'images/download.jpg'},
+        
+    ]
+    return render(request, 'shopping.html', {'products': products})
+
+
+def shoppingdetails(request, product_id):
+    products = [
+        {'name': 'Product 1','brand':'Brand 1', 'price': 10.99, 'image': 'images/f2.jpg'},
+        {'name': 'Product 2', 'brand':'Brand 2', 'price': 19.99, 'image': 'images/ff2.jpg'},
+        {'name': 'Product 3', 'brand':'Brand 3', 'price': 5.99, 'image': 'images/l.jpg'},
+        {'name': 'Product 4', 'brand':'Brand 4', 'price': 15.99, 'image': 'images/download.jpg'},
+        
+    ]
+    # The URL uses a numeric ID, while the displayed name remains free to contain
+    # spaces or other characters.
+    if product_id < 1 or product_id > len(products):
+        return HttpResponse("Product not found", status=404)
+
+    product = products[product_id - 1]
+    return render(request, 'shoppingdetails.html', {'product': product})
+
+

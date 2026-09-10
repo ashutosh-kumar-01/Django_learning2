@@ -97,4 +97,10 @@ urlpatterns = [
     path('testimage/', views.testimage),
     path('productlist/', views.productlist),
     
+    
+    # for show details of the product
+    path('shoppinglist/', views.shoppinglist, name='shoppinglist'),
+    # path('product_detail/<int:product_id>/', views.product_detail, name='product_detail'),
+    path('shoppingdetails/<int:product_id>/', views.shoppingdetails, name='shoppingdetails'),
+    
 ]
