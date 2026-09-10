@@ -1,0 +1,10 @@
+<table border="1">
+    <tbody>
+        {% for item in menu %}
+            <tr {% if item.price == 'free' %}style="background-color: pink"{% endif %}>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
