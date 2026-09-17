@@ -1,0 +1,58 @@
+{% extends "base1.html" %} {% load static %} {% block title %}Our story |
+Saffron Table{% endblock %} {% block css %} .story-hero{padding:78px 0
+35px;background:linear-gradient(180deg,#f7ecdc,#fffaf3)}.story-hero
+h1{font-size:clamp(3rem,6vw,5rem);line-height:1;margin:13px 0
+18px;max-width:700px}.story-hero
+p{max-width:610px;color:#596657;font-size:1.08rem;line-height:1.75}.story-grid{display:grid;grid-template-columns:1.05fr
+.95fr;gap:58px;align-items:center}.story-image{height:460px;width:100%;object-fit:cover;border-radius:22px;box-shadow:18px
+18px 0 #e9cda9}.story-copy h2{font-size:2.45rem;margin:9px 0 16px}.story-copy
+p{color:#647063;line-height:1.8}.values{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:25px}.value{border-top:2px
+solid #d98048;padding-top:12px}.value
+strong{display:block;font-size:1.1rem;margin-bottom:5px}.value
+span{color:#687467;font-size:.93rem;line-height:1.5}@media(max-width:700px){.story-grid{grid-template-columns:1fr;gap:35px}.story-image{height:320px}.values{grid-template-columns:1fr}.story-hero{padding-top:55px}}
+{% endblock %} {% block content %}
+<section class="story-hero">
+  <div class="page-container">
+    <div class="eyebrow">Our story</div>
+    <h1>A little more joy at every table.</h1>
+    <p>
+      Saffron Table began with a simple belief: the best meals are generous,
+      unhurried and shared with people you love.
+    </p>
+  </div>
+</section>
+<section class="section page-container">
+  <div class="story-grid">
+    <img
+      class="story-image"
+      src="{% static 'images/chef-story.png' %}"
+      alt="Our chef preparing a meal in the Saffron Table kitchen"
+    />
+    <div class="story-copy">
+      <div class="eyebrow">Rooted in good food</div>
+      <h2>Cooked with heart, served with warmth.</h2>
+      <p>
+        Our kitchen celebrates ingredients that are familiar and full of
+        character. We keep recipes honest, flavours bright, and the welcome warm
+        from the first hello.
+      </p>
+      <p>
+        Whether you visit for lunch, a catch-up or a quiet moment to yourself,
+        there is always a place for you here.
+      </p>
+      <div class="values">
+        <div class="value">
+          <strong>Seasonal</strong
+          ><span>We follow the best of each season.</span>
+        </div>
+        <div class="value">
+          <strong>Generous</strong><span>Food made for sharing freely.</span>
+        </div>
+        <div class="value">
+          <strong>Local</strong><span>A neighbourhood table for everyone.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
