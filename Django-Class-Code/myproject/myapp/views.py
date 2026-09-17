@@ -456,3 +456,39 @@ def shoppingdetails(request, product_id):
     return render(request, 'shoppingdetails.html', {'product': product})
 
 
+
+
+
+
+    
+# template inheritance
+def home3(request):
+    return render(request, 'home1.html')
+def about3(request):
+    return render(request, 'about1.html')   
+def food3(request):
+    return food(request)
+
+def food(request):
+    newmenu=[
+        {
+            'name': 'Hakka Noodles', 'price': 140, 'image': 'images/f2.jpg',
+            'description': 'Wok-tossed noodles with crisp vegetables and house sauce.'
+        },
+        {
+            'name': 'Garden Pizza', 'price': 220, 'image': 'images/ff2.jpg',
+            'description': 'Stone-baked pizza with mozzarella, basil and seasonal vegetables.'
+        },
+        {
+            'name': 'Artisan Bread Basket', 'price': 80, 'image': 'images/l.jpg',
+            'description': 'Freshly baked bread served warm with herbed butter.'
+        },
+        {
+            'name': 'Paneer Butter Masala', 'price': 260, 'image': 'images/paneer-meal.png',
+            'description': 'Creamy tomato curry with tender paneer, naan and fragrant rice.'
+        },
+    ]
+    
+    return render(request, 'food1.html', {'menu': newmenu})
+
+
