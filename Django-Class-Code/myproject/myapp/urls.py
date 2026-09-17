@@ -103,4 +103,19 @@ urlpatterns = [
     # path('product_detail/<int:product_id>/', views.product_detail, name='product_detail'),
     path('shoppingdetails/<int:product_id>/', views.shoppingdetails, name='shoppingdetails'),
     
+    
+    
+    
+    
+    # template inheritance
+    path('home3/', views.home3, name='home3'),
+    path('about3/', views.about3, name='about3'),   
+    path('food3/', views.food3, name='food3'),
+    
+    
+    
 ]
+
+
+
+    
