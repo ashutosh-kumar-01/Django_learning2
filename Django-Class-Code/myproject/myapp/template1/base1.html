@@ -1,0 +1,20 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Saffron Table{% endblock %}</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+      *{box-sizing:border-box} body{margin:0;background:#fffaf3;color:#263127;font-family:'DM Sans',Arial,sans-serif} h1,h2,h3{font-family:'Playfair Display',Georgia,serif}.page-container{width:min(1120px,calc(100% - 40px));margin:0 auto}.eyebrow{color:#c96d35;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}.button{display:inline-block;padding:13px 22px;border-radius:999px;background:#c96d35;color:#fff;font-weight:700;text-decoration:none;transition:.2s ease}.button:hover{background:#9f4d25;transform:translateY(-2px)}.section{padding:78px 0}.section-heading{max-width:590px;margin-bottom:32px}.section-heading h2{margin:8px 0 10px;font-size:clamp(2rem,4vw,3rem)}.section-heading p{color:#657064;line-height:1.7}footer{margin-top:30px;padding:30px 0;background:#263127;color:#e7ebdf;text-align:center;font-size:.9rem}
+      {% block css %}{% endblock %}
+      @media(max-width:650px){.page-container{width:min(100% - 28px,1120px)}.section{padding:52px 0}}
+    </style>
+  </head>
+  <body>
+    {% include "header1.html" %}
+    <main>{% block content %}{% endblock %}</main>
+    <footer>© 2026 Saffron Table · Made with care, served with warmth.</footer>
+  </body>
+</html>
