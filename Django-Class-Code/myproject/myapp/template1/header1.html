@@ -1,0 +1,77 @@
+<header class="site-header">
+  <div class="page-container nav-wrap">
+    <a class="brand" href="{% url 'home3' %}"><span>Saffron</span> Table</a>
+    <nav aria-label="Main navigation">
+      <a href="{% url 'home3' %}">Home</a
+      ><a href="{% url 'about3' %}">Our story</a
+      ><a href="{% url 'food3' %}">Menu</a>
+    </nav>
+    <a class="nav-cta" href="{% url 'food3' %}">Explore menu</a>
+  </div>
+</header>
+<style>
+  .site-header {
+    background: #fffaf3;
+    border-bottom: 1px solid #eee3d5;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .nav-wrap {
+    min-height: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .brand {
+    color: #263127;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.38rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .brand span {
+    color: #c96d35;
+  }
+  nav {
+    display: flex;
+    gap: 25px;
+  }
+  nav a {
+    color: #526052;
+    font-size: 0.94rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  nav a:hover {
+    color: #c96d35;
+  }
+  .nav-cta {
+    background: #263127;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.86rem;
+    font-weight: 700;
+    padding: 10px 16px;
+    text-decoration: none;
+  }
+  @media (max-width: 650px) {
+    .nav-cta {
+      display: none;
+    }
+    .nav-wrap {
+      min-height: 64px;
+      gap: 12px;
+    }
+    nav {
+      gap: 13px;
+    }
+    .brand {
+      font-size: 1.15rem;
+    }
+    nav a {
+      font-size: 0.84rem;
+    }
+  }
+</style>
