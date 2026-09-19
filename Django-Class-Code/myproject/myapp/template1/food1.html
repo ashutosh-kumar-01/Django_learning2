@@ -1,0 +1,54 @@
+{% extends "base1.html" %} {% load static %} {% block title %}Order online |
+Saffron Table{% endblock %} {% block css %} .menu-intro{padding:70px 0
+35px;text-align:center;background:#f7ecdc}.menu-intro
+h1{font-size:clamp(2.8rem,6vw,4.5rem);margin:10px 0}.menu-intro
+p{color:#657064;max-width:540px;margin:0
+auto;line-height:1.7}.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.food-card{background:#fff;border:1px
+solid #eee3d5;border-radius:18px;overflow:hidden;box-shadow:0 12px 35px
+rgba(67,45,23,.07);transition:transform .2s,box-shadow
+.2s}.food-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px
+rgba(67,45,23,.14)}.food-image{width:100%;height:220px;object-fit:cover;display:block}.food-info{padding:20px}.food-info-top{display:flex;gap:16px;justify-content:space-between;align-items:start}.dish-name{font-size:1.5rem;margin:0}.price{color:#c96d35;font-weight:700;white-space:nowrap}.description{color:#687467;line-height:1.6;font-size:.94rem;margin:10px
+0
+18px}.order-row{display:flex;justify-content:space-between;align-items:center;border-top:1px
+solid
+#eee9e0;padding-top:16px}.ready{font-size:.8rem;color:#4b8654;font-weight:700}.add-button{border:0;border-radius:999px;background:#263127;color:#fff;padding:10px
+16px;font:700 .84rem 'DM
+Sans',Arial;cursor:pointer}.add-button:hover{background:#c96d35}@media(max-width:680px){.menu-grid{grid-template-columns:1fr}.menu-intro{padding:52px
+0 26px}.food-image{height:200px}} {% endblock %} {% block content %}
+<section class="menu-intro">
+  <div class="page-container">
+    <div class="eyebrow">Order online</div>
+    <h1>Your next favourite meal.</h1>
+    <p>
+      Choose something delicious from our kitchen. Every order is freshly
+      prepared with care.
+    </p>
+  </div>
+</section>
+<section class="section page-container">
+  <div class="menu-grid">
+    {% for item in menu %}
+    <article class="food-card">
+      <img
+        class="food-image"
+        src="{% static item.image %}"
+        alt="{{ item.name }}"
+      />
+      <div class="food-info">
+        <div class="food-info-top">
+          <h2 class="dish-name">{{ item.name }}</h2>
+          <span class="price">₹{{ item.price }}</span>
+        </div>
+        <p class="description">{{ item.description }}</p>
+        <div class="order-row">
+          <span class="ready">Available now</span
+          ><button class="add-button" type="button">Add to order +</button>
+        </div>
+      </div>
+    </article>
+    {% empty %}
+    <p>Our menu will be ready soon.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
