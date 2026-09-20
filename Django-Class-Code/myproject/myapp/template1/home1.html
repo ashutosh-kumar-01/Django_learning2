@@ -1,0 +1,101 @@
+{% extends "base1.html" %} {% load static %} {% block title %}Saffron Table |
+Modern comfort food{% endblock %} {% block css %}
+.hero{min-height:610px;display:grid;place-items:center;background:linear-gradient(90deg,rgba(25,35,27,.86),rgba(25,35,27,.68)
+42%,rgba(25,35,27,.12)),url("{% static 'images/restaurant-hero.png' %}")
+center/cover;color:#fff}.hero-copy{width:min(1120px,calc(100% -
+40px))}.hero-content{max-width:590px;padding:72px 0}.hero
+.eyebrow{color:#f6bc78}.hero
+h1{font-size:clamp(3rem,7vw,5.5rem);line-height:.98;margin:14px 0 20px}.hero
+p{color:#f4eee5;font-size:1.1rem;line-height:1.7;max-width:510px;margin-bottom:30px}.hero
+.button{background:#f6bc78;color:#263127}.hero
+.button:hover{background:#fff}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature{background:#fff;border:1px
+solid
+#eee3d5;border-radius:16px;padding:26px}.feature-icon{font-size:1.8rem}.feature
+h3{font-size:1.35rem;margin:15px 0 8px}.feature
+p{color:#667166;line-height:1.65;margin:0}.gallery-section{background:#263127;color:#fff}.gallery-section
+.section-heading
+p{color:#d7dfd2}.dish-gallery{display:grid;grid-template-columns:1.05fr .95fr
+.95fr;gap:16px}.gallery-card{height:265px;position:relative;overflow:hidden;border-radius:16px}.gallery-card
+img{width:100%;height:100%;object-fit:cover;transition:transform
+.4s}.gallery-card:hover
+img{transform:scale(1.06)}.gallery-label{position:absolute;left:15px;bottom:14px;background:rgba(22,31,23,.88);padding:8px
+12px;border-radius:999px;font-family:'Playfair
+Display',Georgia,serif}@media(max-width:650px){.hero{min-height:520px}.hero-copy{width:min(100%
+-
+28px,1120px)}.feature-grid,.dish-gallery{grid-template-columns:1fr}.gallery-card{height:220px}}
+{% endblock %} {% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <div class="hero-content">
+      <div class="eyebrow">Everyday dining, beautifully made</div>
+      <h1>Food that feels like home.</h1>
+      <p>
+        Seasonal ingredients, familiar flavours and a table always set for good
+        conversation.
+      </p>
+      <a class="button" href="{% url 'food3' %}">Order from our menu</a>
+    </div>
+  </div>
+</section>
+<section class="section page-container">
+  <div class="section-heading">
+    <div class="eyebrow">Why Saffron Table</div>
+    <h2>Simple food. Thoughtful details.</h2>
+    <p>
+      A relaxed neighbourhood restaurant where every plate is made to be shared
+      and remembered.
+    </p>
+  </div>
+  <div class="feature-grid">
+    <article class="feature">
+      <div class="feature-icon">Fresh</div>
+      <h3>Fresh, daily</h3>
+      <p>Made from carefully chosen ingredients and served at their best.</p>
+    </article>
+    <article class="feature">
+      <div class="feature-icon">Warm</div>
+      <h3>Warm hospitality</h3>
+      <p>Come for a quick lunch or settle in for a long, lovely evening.</p>
+    </article>
+    <article class="feature">
+      <div class="feature-icon">Share</div>
+      <h3>Comfort on a plate</h3>
+      <p>
+        Generous dishes inspired by the flavours we return to again and again.
+      </p>
+    </article>
+  </div>
+</section>
+<section class="section gallery-section">
+  <div class="page-container">
+    <div class="section-heading">
+      <div class="eyebrow">A taste of our table</div>
+      <h2>Made for the moment.</h2>
+      <p>
+        From a quick midweek craving to a slow dinner with friends, there is
+        something delicious waiting for you.
+      </p>
+    </div>
+    <div class="dish-gallery">
+      <article class="gallery-card">
+        <img
+          src="{% static 'images/paneer-meal.png' %}"
+          alt="Paneer butter masala meal"
+        /><span class="gallery-label">Paneer Butter Masala</span>
+      </article>
+      <article class="gallery-card">
+        <img src="{% static 'images/f2.jpg' %}" alt="Fresh noodles" /><span
+          class="gallery-label"
+          >Wok-tossed Noodles</span
+        >
+      </article>
+      <article class="gallery-card">
+        <img src="{% static 'images/ff2.jpg' %}" alt="Garden pizza" /><span
+          class="gallery-label"
+          >Garden Pizza</span
+        >
+      </article>
+    </div>
+  </div>
+</section>
+{% endblock %}
