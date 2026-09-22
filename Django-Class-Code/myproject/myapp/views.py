@@ -462,6 +462,8 @@ def shoppingdetails(request, product_id):
 
     
 # template inheritance
+
+
 def home3(request):
     return render(request, 'home1.html')
 def about3(request):
@@ -492,3 +494,34 @@ def food(request):
     return render(request, 'food1.html', {'menu': newmenu})
 
 
+
+
+# external css using 
+def testcss(request):
+    return render(request, 'testcss.html')
+
+
+
+def items(request):
+    products = [
+        {'name':'laptop'},
+        {'name':'mobile'},
+        {'name':'tablet'},
+        {'name':'desktop'},
+    ]
+    return render(request, 'items.html', {'products': products})
+
+
+def itemdetails(request, product_id):
+    products = [
+        {'name':'laptop', 'price': 50000, 'description': 'A high-performance laptop for work and play.'},
+        {'name':'mobile', 'price': 20000, 'description': 'A sleek smartphone with a stunning display.'},
+        {'name':'tablet', 'price': 30000, 'description': 'A versatile tablet for entertainment and productivity.'},
+        {'name':'desktop', 'price': 40000, 'description': 'A powerful desktop computer for gaming and work.'},
+    ]
+    
+    if product_id < 1 or product_id > len(products):
+        return HttpResponse("Product not found", status=404)
+
+    product = products[product_id - 1]
+    return render(request, 'itemdetails.html', {'product': product})

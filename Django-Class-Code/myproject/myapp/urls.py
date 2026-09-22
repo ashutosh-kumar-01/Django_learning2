@@ -114,6 +114,14 @@ urlpatterns = [
     
     
     
+    
+    # external css using
+    path('testcss/', views.testcss, name='testcss'),
+    
+    # items
+    path('items/', views.items, name='items'),
+    path('itemdetails/<int:product_id>/', views.itemdetails, name='itemdetails'),
+
 ]
 
 

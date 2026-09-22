@@ -1,0 +1,143 @@
+h1{
+    color: red;
+    background-color: yellow;
+}
+/* img{
+    border: 5px solid rgb(216, 30, 30);
+    border-radius: 10px;
+    width: 900px;
+    height: 900px;
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    cursor: pointer;
+} */
+/* 
+img{
+    filter: brightness(1.05) contrast(1.05);
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(
+        -45deg,
+        #0f172a,
+        #1e293b,
+        #334155,
+        #0f172a
+    );
+    background-size: 400% 400%;
+    animation: bgMove 10s ease infinite;
+}
+
+img{
+    width: 500px;
+    height: auto;
+    padding: 8px;
+
+    border: 5px solid;
+    border-radius: 25px;
+
+    animation:
+        borderColor 5s linear infinite,
+        float 4s ease-in-out infinite;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.3);
+
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+img:hover{
+    transform: scale(1.06);
+    box-shadow:
+        0 20px 50px rgba(255,255,255,0.15),
+        0 0 30px rgba(255,255,255,0.2);
+}
+
+@keyframes borderColor{
+    0%{
+        border-color:#ff4d6d;
+    }
+    25%{
+        border-color:#ffd166;
+    }
+    50%{
+        border-color:#06d6a0;
+    }
+    75%{
+        border-color:#4cc9f0;
+    }
+    100%{
+        border-color:#ff4d6d;
+    }
+}
+
+@keyframes float{
+    0%,100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes bgMove{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+} */
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(
+        -45deg,
+        #0f172a,
+        #1e293b,
+        #334155,
+        #0f172a
+    );
+    background-size: 400% 400%;
+    animation: bgMove 10s ease infinite;
+}
+img{
+    position: absolute;
+    width: 300px;
+    border: 5px solid cyan;
+    border-radius: 20px;
+    animation:
+        moveX 6s linear infinite alternate,
+        moveY 4s linear infinite alternate,
+        borderColor 4s linear infinite;
+}
+
+@keyframes moveX{
+    from{ left:0; }
+    to{ left:calc(100vw - 320px); }
+}
+
+@keyframes moveY{
+    from{ top:0; }
+    to{ top:calc(100vh - 320px); }
+}
+
+@keyframes borderColor{
+    0%{border-color:red;}
+    25%{border-color:yellow;}
+    50%{border-color:lime;}
+    75%{border-color:cyan;}
+    100%{border-color:red;}
+}

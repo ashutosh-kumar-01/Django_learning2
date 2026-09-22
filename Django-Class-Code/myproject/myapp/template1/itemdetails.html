@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ product.name|title }} Details</title>
+  </head>
+  <body>
+    <h1>{{ product.name|title }}</h1>
+    <p><strong>Price:</strong> ₹{{ product.price }}</p>
+    <p><strong>Description:</strong> {{ product.description }}</p>
+
+    <p><a href="{% url 'items' %}">Back to all items</a></p>
+  </body>
+</html>
