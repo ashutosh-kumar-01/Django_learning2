@@ -19,6 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('cafe/', include('cafeorder.urls')),
     path('', include('myapp.urls')),
 ]
 handler404 = 'myproject.views.handler404'

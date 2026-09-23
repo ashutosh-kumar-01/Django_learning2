@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'cafeorder',
     'myapp',
     'django.contrib.admin',
     'django.contrib.auth',

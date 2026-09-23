@@ -525,3 +525,20 @@ def itemdetails(request, product_id):
 
     product = products[product_id - 1]
     return render(request, 'itemdetails.html', {'product': product})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
