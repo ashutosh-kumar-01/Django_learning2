@@ -1,0 +1,32 @@
+{% extends "base5.html" %}
+
+{% block title %}All Cafe Orders{% endblock %}
+
+{% block content %}
+    <form method="get">
+        <label for="status">Filter by status:</label>
+        <select id="status" name="status">
+            <option value="">All orders</option>
+            <option value="ready" {% if selected_status == "ready" %}selected{% endif %}>Ready</option>
+            <option value="preparing" {% if selected_status == "preparing" %}selected{% endif %}>Preparing</option>
+            <option value="cancelled" {% if selected_status == "cancelled" %}selected{% endif %}>Cancelled</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+
+    {% if orders %}
+        <table>
+            <tr><th>Order ID</th><th>Customer Name</th><th>Item Name</th><th>Order Status</th></tr>
+            {% for order in orders %}
+                <tr>
+                    <td><a href="{% url 'cafeorder:order_detail' order.order_id %}">{{ order.order_id }}</a></td>
+                    <td>{{ order.customer_name }}</td>
+                    <td>{{ order.item_name }}</td>
+                    <td>{{ order.status }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No order found.</p>
+    {% endif %}
+{% endblock %}

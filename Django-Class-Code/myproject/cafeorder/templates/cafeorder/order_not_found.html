@@ -1,0 +1,8 @@
+{% extends "base5.html" %}
+
+{% block title %}Order Not Found{% endblock %}
+
+{% block content %}
+    <p>Order not found.</p>
+    <p><a href="{% url 'cafeorder:order_list' %}">Back to all orders</a></p>
+{% endblock %}

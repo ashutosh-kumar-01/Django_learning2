@@ -1,0 +1,23 @@
+{% extends "base5.html" %}
+
+{% block title %}Order {{ order.order_id }}{% endblock %}
+
+{% block content %}
+    <h2>Order #{{ order.order_id }}</h2>
+    <p><strong>Customer name:</strong> {{ order.customer_name }}</p>
+    <p><strong>Item name:</strong> {{ order.item_name }}</p>
+    <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+    <p><strong>Price per item:</strong> ₹{{ order.price_per_item }}</p>
+    <p><strong>Order status:</strong> {{ order.status }}</p>
+    <p><strong>Total amount:</strong> ₹{{ order.total_amount }}</p>
+
+    {% if order.status == "ready" %}
+        <p><strong>Order message:</strong> Order ready for collection</p>
+    {% elif order.status == "preparing" %}
+        <p><strong>Order message:</strong> Order being prepared</p>
+    {% elif order.status == "cancelled" %}
+        <p><strong>Order message:</strong> Order cancelled</p>
+    {% endif %}
+
+    <p><a href="{% url 'cafeorder:order_list' %}">Back to all orders</a></p>
+{% endblock %}
