@@ -108,7 +108,7 @@ urlpatterns = [
     
     
     # template inheritance
-    path('home3/', views.home3, name='home3'),
+    path('git/', views.home3, name='home3'),
     path('about3/', views.about3, name='about3'),   
     path('food3/', views.food3, name='food3'),
     
@@ -121,6 +121,16 @@ urlpatterns = [
     # items
     path('items/', views.items, name='items'),
     path('itemdetails/<int:product_id>/', views.itemdetails, name='itemdetails'),
+    
+    
+    
+    
+    # testing in Django
+    path('sampletest/', views.sampletest, name='st'),
+    path('sampletest1/<int:id>/',views.sampletest1, name='st1'),
+    
+    path('old/',views.old),
+    path('new/',views.new)
 
 ]
 

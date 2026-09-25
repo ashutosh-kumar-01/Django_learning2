@@ -529,11 +529,21 @@ def itemdetails(request, product_id):
 
 
 
+# testing in Django
+
+def sampletest(request):
+    return HttpResponse("<h1 style='color:blue'>This is a sample test page</h1>")
+
+def sampletest1(request, id):
+    return HttpResponse(f"<h1 style='color:blue'>This is a sample test page with id {id}</h1>")
 
 
 
 
-
+def new(request):
+    return HttpResponse("some content")
+def old(request):
+    return HttpResponse("some content")
 
 
 

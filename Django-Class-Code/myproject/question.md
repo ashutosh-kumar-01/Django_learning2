@@ -46,3 +46,13 @@ newmenu = [
 ]
 
 render the items as an html table in the templates  using DTL. Also , the background color of the free items should be pink.
+
+
+
+
+# to run test command
+1. Run one specific test
+-> **python manage.py test myapp.tests.UTLTest.test_students_url**
+
+
+
