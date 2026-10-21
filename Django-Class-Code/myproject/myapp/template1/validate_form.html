@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation and submission</title>
+</head>
+<body>
+    
+    <form method="POST">
+        {% csrf_token %}
+        name:<input type="text" name="name" value="{{ name|default:'' }}" required>
+        <span style="color: red;">{{name_error}}</span>
+        <br>
+        email:<input type="email" name="email" value="{{ email|default:'' }}" required>
+        <span style="color: red;">{{email_error}}</span>
+        <br>
+        password:<input type="password" name="password" required>
+        <span style="color: red;">{{password_error}}</span>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if submitted_details %}
+        <p style="color: green;">Form submitted successfully! Name: {{ submitted_details.name }}, Email: {{ submitted_details.email }}</p>
+    {% endif %}
+</body>
+</html>

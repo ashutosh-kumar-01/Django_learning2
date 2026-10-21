@@ -130,8 +130,15 @@ urlpatterns = [
     path('sampletest1/<int:id>/',views.sampletest1, name='st1'),
     
     path('old/',views.old),
-    path('new/',views.new)
+    path('new/',views.new),
 
+    
+    # formhtml.html 
+    
+    path('htmlform/', views.htmlform, name='htmlform'),
+    
+    # validate_form.html
+    path('validate_form/', views.validate_form, name='validate_form')
 ]
 
 

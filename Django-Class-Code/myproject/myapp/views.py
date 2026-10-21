@@ -548,7 +548,52 @@ def old(request):
 
 
 
+# htmlform.html
+def htmlform(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        if name and email and password:
+            return HttpResponse(
+                f"Form submitted successfully! Name: {name}, Email: {email}"
+            )
+
+    return render(request, "htmlform.html")
 
 
 
 
+# validate_form.html
+def validate_form(request):
+    if request.method == 'POST':
+        name = request.POST.get('name', '').strip()
+        email = request.POST.get('email', '').strip()
+        password = request.POST.get('password', '')
+        
+        name_error = None
+        email_error = None
+        password_error = None
+
+        if not name:
+            name_error = "Name is required."
+        if not email:   
+            email_error = "Email is required."
+        if len(password) < 6:
+            password_error = "Password must be at least 6 characters long."
+        if name_error or email_error or password_error:
+            return render(request, "validate_form.html", {
+                "name_error": name_error,
+                "email_error": email_error,
+                "password_error": password_error,
+                "name": name,
+                "email": email,
+            })    
+        submitted_details = {
+            "name": name,
+            "email": email,
+        }
+
+        return render(request, "validate_form.html", {"submitted_details": submitted_details})
+
+    return render(request, "validate_form.html")
