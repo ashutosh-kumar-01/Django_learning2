@@ -138,7 +138,16 @@ urlpatterns = [
     path('htmlform/', views.htmlform, name='htmlform'),
     
     # validate_form.html
-    path('validate_form/', views.validate_form, name='validate_form')
+    path('validate_form/', views.validate_form, name='validate_form'),
+    
+    
+    
+    # form.py
+    path('form_submission/', views.form_submission, name='form_submission'),
+    
+    
+    # 
+    path('validate1/', views.form_submission2, name='validate1')
 ]
 
 
