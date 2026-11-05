@@ -147,7 +147,13 @@ urlpatterns = [
     
     
     # 
-    path('validate1/', views.form_submission2, name='validate1')
+    path('validate1/', views.form_submission2, name='validate1'),
+    
+    
+    # path for blogpostform.html
+    path('insertblogpost/', views.insertblogpost, name='insertblogpost'),
+    path('insertblogpost', views.insertblogpost),
+    path('blogposts/', views.blogposts, name='blogposts'),
 ]
 
 
