@@ -56,3 +56,4 @@ render the items as an html table in the templates  using DTL. Also , the backgr
 
 
 
+# **create three views names as cookiesview1, cookieview2, cookieview3  that sets the cookie name "Last_page" to values "Page1", "Page2", "Page3" respectively and also create corresponding URLS for the same. Now create a view named LastVisitedPage and fetch the last visited page via cookie**

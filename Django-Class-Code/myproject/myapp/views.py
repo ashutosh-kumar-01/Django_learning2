@@ -624,4 +624,55 @@ def form_submission2(request):
         if form.is_valid():
             submitted_details = form.cleaned_data
     form = InputForm2()        
-    return render(request, 'InputForm2.html', {'form': form, 'submitted_details': submitted_details})       
+    return render(request, 'InputForm2.html', {'form': form, 'submitted_details': submitted_details})      
+
+
+
+# from .forms import Blogpostform
+from .forms import Blogpostform
+def insertblogpost(request):
+    blog_created = False
+    blog_post = None
+    if request.method == 'POST':
+        form = Blogpostform(request.POST, request.FILES)
+        if form.is_valid():
+            blog_post = form.save()
+            blog_created = True
+    else:
+        form = Blogpostform()
+        blog_created = False
+    return render(request, 'insertblogpost.html', {
+        'form': form,
+        'blog_created': blog_created,
+        'blog_post': blog_post,
+    })
+
+from .models import Blogpost
+def blogposts(request):
+    posts = Blogpost.objects.all()
+    return render(request, 'blogposts.html', {'posts': posts})
+
+
+
+
+# cookies
+# set cookie
+def set_cookie(request):
+    response = HttpResponse("Cookie has been set.")
+    response.set_cookie('Name', 'Ashutosh', max_age=3600)  # Cookie expires in 1 hour
+    response.set_cookie('Age', '25', max_age=3600)  # Cookie expires in 1 hour
+    return response
+
+
+# get cookie
+def get_cookie(request):
+    value = request.COOKIES.get('Name')
+    age = request.COOKIES.get('Age')
+    return HttpResponse(f"Cookie value: {value}, Age: {age}")
+
+
+# delete cookie
+def delete_cookie(request):
+    response = HttpResponse("Cookie has been deleted.")
+    response.delete_cookie('Name')
+    return response

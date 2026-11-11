@@ -154,6 +154,15 @@ urlpatterns = [
     path('insertblogpost/', views.insertblogpost, name='insertblogpost'),
     path('insertblogpost', views.insertblogpost),
     path('blogposts/', views.blogposts, name='blogposts'),
+    
+    
+    
+    # cookies
+    path('set_cookie/', views.set_cookie, name='set_cookie'),
+    # get cookies
+    path('get_cookie/', views.get_cookie, name='get_cookie'),
+    # delete cookies
+    path('delete_cookie/', views.delete_cookie, name='delete_cookie'),
 ]
 
 
