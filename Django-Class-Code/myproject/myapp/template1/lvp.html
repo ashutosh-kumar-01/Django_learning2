@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last Visited Page</title>
+</head>
+<body>
+    Last Visited Page: {{ last_visited_page }} <br>
+    <a href="{% url 'cookiesview1' %}">Go to Page 1</a> <br>
+    <a href="{% url 'cookieview2' %}">Go to Page 2</a> <br>
+    <a href="{% url 'cookieview3' %}">Go to Page 3</a> <br>
+    <a href="{% url 'last_visited_page' %}">Show Last Visited Page</a>
+</body>
+</html>
