@@ -38,3 +38,13 @@ class Blogpostform(forms.ModelForm):
         model = Blogpost
         # fields = ['title', 'post', 'thumbnail']  
         fields = '__all__'  # Include all fields from the model
+        
+        
+        
+        
+        
+from .models import Customer
+class CustomerForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+        fields = ['phone', 'address']  # Include the fields you want to display in the form
