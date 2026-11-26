@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.contrib.auth.views import LoginView
 from django.urls import path, re_path
 from . import views
 
@@ -102,6 +103,11 @@ urlpatterns = [
     path('shoppinglist/', views.shoppinglist, name='shoppinglist'),
     # path('product_detail/<int:product_id>/', views.product_detail, name='product_detail'),
     path('shoppingdetails/<int:product_id>/', views.shoppingdetails, name='shoppingdetails'),
+    path('restaurant-detail/', views.restaurant_detail, name='restaurant_detail'),
+    path('item-detail/', views.item_detail, name='item_detail'),
+    path('payment/', views.payment, name='payment'),
+    path('tracking/', views.tracking, name='tracking'),
+    path('checkout/', views.checkout, name='checkout'),
     
     
     
@@ -163,6 +169,21 @@ urlpatterns = [
     path('get_cookie/', views.get_cookie, name='get_cookie'),
     # delete cookies
     path('delete_cookie/', views.delete_cookie, name='delete_cookie'),
+
+    # last visited page cookie
+    path('cookiesview1/', views.cookiesview1, name='cookiesview1'),
+    path('cookieview2/', views.cookieview2, name='cookieview2'),
+    path('cookieview3/', views.cookieview3, name='cookieview3'),
+    path('last-visited-page/', views.LastVisitedPage, name='last_visited_page'),
+    
+    
+    
+    
+    # auth url
+    path('register/', views.register, name='register'),
+    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
+    
+    
 ]
 
 

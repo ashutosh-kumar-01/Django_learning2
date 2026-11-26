@@ -456,6 +456,110 @@ def shoppingdetails(request, product_id):
     return render(request, 'shoppingdetails.html', {'product': product})
 
 
+def restaurant_detail(request):
+    """Display the Pizza Palace restaurant menu used by the ordering screens."""
+    restaurant = {
+        'name': 'Pizza Palace',
+        'cuisines': 'Italian, Pizza, Desserts',
+        'rating': '4.7',
+        'reviews': '500+ reviews',
+        'delivery_time': '25–30 min',
+        'distance': '900 m',
+        'image': 'images/restaurant-hero.png',
+    }
+    menu_items = [
+        {
+            'name': 'Margherita Pizza',
+            'description': 'Classic tomato sauce, fresh mozzarella, basil and olive oil.',
+            'price': 299,
+            'tag': 'Recommended',
+            'image': 'images/ff2.jpg',
+        },
+        {
+            'name': 'Pepperoni Feast',
+            'description': 'Pepperoni and mozzarella on our signature tomato base.',
+            'price': 349,
+            'tag': 'Bestseller',
+            'image': 'images/f2.jpg',
+        },
+    ]
+    return render(request, 'restaurant_detail.html', {
+        'restaurant': restaurant,
+        'menu_items': menu_items,
+    })
+
+
+def item_detail(request):
+    """Display the selected pizza and its configurable order options."""
+    item = {
+        'name': 'Margherita Pizza',
+        'restaurant': "La Pino'z Pizza",
+        'description': 'Cheese, basil and tomato sauce',
+        'base_price': 299,
+        'image': 'images/ff2.jpg',
+        'sizes': [
+            {'name': 'Regular', 'price': 299},
+            {'name': 'Medium', 'price': 399},
+            {'name': 'Large', 'price': 499},
+        ],
+    }
+    return render(request, 'item_detail.html', {'item': item})
+
+
+def payment(request):
+    """Present payment choices for the current demo pizza order."""
+    order = {
+        'restaurant': 'Pizza Palace',
+        'items': [
+            {'name': 'Margherita Pizza', 'quantity': 1, 'price': 299},
+            {'name': 'Pepperoni Feast', 'quantity': 1, 'price': 349},
+        ],
+        'item_total': 648,
+        'delivery_fee': 49,
+        'taxes': 32,
+        'total': 729,
+    }
+    return render(request, 'payment.html', {'order': order})
+
+
+def tracking(request):
+    """Show a delivery-status view for the demo pizza order."""
+    order = {
+        'number': '#PP-1048',
+        'restaurant': 'Pizza Palace',
+        'eta': '12 min',
+        'address': 'Home · 42 Green Park, New Delhi',
+        'rider': 'Arjun Kumar',
+        'rider_rating': '4.9',
+        'steps': [
+            {'title': 'Order confirmed', 'detail': 'Pizza Palace has accepted your order.', 'time': '9:32 PM', 'state': 'complete'},
+            {'title': 'Being prepared', 'detail': 'Your pizzas are fresh from the oven.', 'time': '9:36 PM', 'state': 'complete'},
+            {'title': 'Out for delivery', 'detail': 'Arjun is on the way to you.', 'time': 'Now', 'state': 'current'},
+            {'title': 'Delivered', 'detail': 'Enjoy your meal!', 'time': '', 'state': 'pending'},
+        ],
+    }
+    return render(request, 'tracking.html', {'order': order})
+
+
+def checkout(request):
+    """Review address and items before handing the order to payment."""
+    order = {
+        'restaurant': 'Pizza Palace',
+        'address_name': 'Home',
+        'address': '42 Green Park, New Delhi – 110016',
+        'phone': '+91 98765 43210',
+        'items': [
+            {'name': 'Margherita Pizza', 'detail': 'Regular · Qty 1', 'price': 299},
+            {'name': 'Pepperoni Feast', 'detail': 'Qty 1', 'price': 349},
+        ],
+        'item_total': 648,
+        'delivery_fee': 49,
+        'taxes': 32,
+        'total': 729,
+    }
+    return render(request, 'checkout.html', {'order': order})
+
+
 
 
 
@@ -676,3 +780,62 @@ def delete_cookie(request):
     response = HttpResponse("Cookie has been deleted.")
     response.delete_cookie('Name')
     return response
+
+
+# Store the most recently visited page in the Last_page cookie.
+def cookiesview1(request):
+    response = HttpResponse("You visited Page1.")
+    response.set_cookie('Last_page', 'Page1', max_age=3600)  # Cookie expires in 1 hour
+    return response
+
+
+def cookieview2(request):
+    response = HttpResponse("You visited Page2.")
+    response.set_cookie('Last_page', 'Page2', max_age=3600)  # Cookie expires in 1 hour
+    return response
+
+
+def cookieview3(request):
+    response = HttpResponse("You visited Page3.")
+    response.set_cookie('Last_page', 'Page3', max_age=3600)  # Cookie expires in 1 hour
+    return response
+
+
+def LastVisitedPage(request):
+    last_page = request.COOKIES.get('Last_page', 'No page has been visited yet.')
+    # return HttpResponse(f"Last visited page: {last_page}")
+    return render(request, 'lvp.html', {'last_page': last_page})
+
+
+
+
+# ----------------------------auth------------------------------
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomerForm
+
+
+def register(request):
+    if request.method == 'POST':
+        user_form = UserCreationForm(request.POST)
+        customer_form = CustomerForm(request.POST)
+
+        if user_form.is_valid() and customer_form.is_valid():
+            user = user_form.save()
+            customer = customer_form.save(commit=False)
+            customer.user = user
+            customer.save()
+            return HttpResponse("Registration successful!")
+
+        # Keep the bound forms so their validation errors are shown.
+        return render(request, 'register.html', {
+            'user_form': user_form,
+            'customer_form': customer_form,
+        })
+
+    # A GET request needs empty forms and, importantly, an HTTP response.
+    user_form = UserCreationForm()
+    customer_form = CustomerForm()
+    return render(request, 'register.html', {
+        'user_form': user_form,
+        'customer_form': customer_form,
+    })

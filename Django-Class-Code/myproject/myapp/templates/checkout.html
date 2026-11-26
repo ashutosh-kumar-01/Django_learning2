@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout · Pizza Palace</title>
+    <style>
+        * { box-sizing: border-box; } body { margin: 0; background: #f5f5f5; color: #202124; font-family: Arial, sans-serif; } .app { width: min(100%, 520px); min-height: 100vh; margin: auto; padding: 0 16px 96px; background: #f7f7f7; } header { display: flex; align-items: center; gap: 15px; height: 67px; margin: 0 -16px 16px; padding: 0 16px; background: #fff; } .back { width: 39px; height: 39px; border: 0; border-radius: 50%; background: #f4f4f4; font-size: 26px; cursor: pointer; } h1, h2, p { margin-top: 0; } h1 { margin-bottom: 0; font-size: 21px; } h2 { margin-bottom: 14px; font-size: 18px; } .card { margin-bottom: 16px; padding: 17px; border-radius: 12px; background: #fff; box-shadow: 0 1px 3px #0000000d; } .address { display: flex; align-items: flex-start; gap: 12px; } .home-icon { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 9px; background: #fff1eb; color: #e6531d; font-size: 19px; } .address-copy { flex: 1; } .address-copy strong, .address-copy small { display: block; } .address-copy small { margin-top: 5px; color: #6e7479; line-height: 1.35; } .edit { padding: 5px 0; border: 0; color: #e6531d; background: none; font-weight: 700; cursor: pointer; } .contact { display: flex; justify-content: space-between; margin-top: 16px; padding-top: 15px; border-top: 1px solid #eee; color: #5e666d; font-size: 14px; } .contact b { color: #202124; } .restaurant { margin: 0 0 13px; font-weight: 700; } .item { display: flex; justify-content: space-between; gap: 15px; padding: 12px 0; border-bottom: 1px solid #eee; } .item:last-of-type { border-bottom: 0; } .item strong, .item small { display: block; } .item small { margin-top: 4px; color: #737980; } .item-price { font-weight: 700; } .bill-line { display: flex; justify-content: space-between; margin: 10px 0; color: #5f676d; font-size: 14px; } .total { margin-top: 14px; padding-top: 15px; border-top: 1px solid #eee; color: #202124; font-weight: 700; font-size: 16px; } .note { margin: 0; color: #6c7379; font-size: 13px; line-height: 1.4; } .footer { position: fixed; right: 0; bottom: 0; left: 0; display: flex; justify-content: center; } .footer-inner { display: flex; align-items: center; justify-content: space-between; width: min(100%, 520px); padding: 14px 18px; color: #fff; background: #e95720; } .footer small, .footer strong { display: block; } .footer strong { margin-top: 2px; font-size: 17px; } .footer a { color: #fff; font-size: 16px; font-weight: 700; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <main class="app"><header><button class="back" aria-label="Go back" onclick="history.back()">‹</button><h1>Checkout</h1></header>
+        <h2>Deliver to</h2><section class="card address"><span class="home-icon">⌂</span><div class="address-copy"><strong>{{ order.address_name }}</strong><small>{{ order.address }}</small></div><button class="edit" id="edit-address">Edit</button></section>
+        <section class="card contact"><span>Contact number</span><b>{{ order.phone }}</b></section>
+        <h2>Order summary</h2><section class="card"><p class="restaurant">{{ order.restaurant }}</p>{% for item in order.items %}<div class="item"><div><strong>{{ item.name }}</strong><small>{{ item.detail }}</small></div><span class="item-price">₹{{ item.price }}</span></div>{% endfor %}<div class="bill-line"><span>Item total</span><span>₹{{ order.item_total }}</span></div><div class="bill-line"><span>Delivery fee</span><span>₹{{ order.delivery_fee }}</span></div><div class="bill-line"><span>Taxes</span><span>₹{{ order.taxes }}</span></div><div class="bill-line total"><span>To Pay</span><span>₹{{ order.total }}</span></div></section>
+        <section class="card"><h2>Delivery instructions</h2><p class="note">Leave at the door · Contactless delivery preferred</p></section>
+    </main>
+    <footer class="footer"><div class="footer-inner"><div><small>To Pay</small><strong>₹{{ order.total }}</strong></div><a href="{% url 'payment' %}">Proceed to Payment →</a></div></footer>
+    <script>document.getElementById('edit-address').onclick = event => { event.currentTarget.textContent = 'Saved'; };</script>
+</body>
+</html>

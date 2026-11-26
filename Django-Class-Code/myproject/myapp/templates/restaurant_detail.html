@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ restaurant.name }} · Food delivery</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; background: #f7f7f7; color: #202124; font-family: Arial, sans-serif; }
+        .app { width: min(100%, 520px); min-height: 100vh; margin: auto; background: #fff; }
+        .hero { height: 235px; padding: 18px; color: #fff; position: relative; background: linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.72)), url('{% static restaurant.image %}') center/cover; }
+        .back { border: 0; border-radius: 50%; width: 42px; height: 42px; background: rgba(255,255,255,.94); color: #202124; font-size: 28px; cursor: pointer; }
+        .hero-text { position: absolute; right: 20px; bottom: 22px; left: 20px; text-shadow: 0 1px 3px #222; }
+        h1 { margin: 0 0 7px; font-size: 30px; } .hero p { margin: 0; font-size: 14px; }
+        .facts { display: flex; gap: 15px; padding: 16px 20px; font-size: 14px; border-bottom: 1px solid #ececec; }
+        .rating { color: #128144; font-weight: 700; } .offer { margin: 18px 16px 6px; padding: 15px; border: 1px solid #ffe0a1; border-radius: 12px; background: #fff9e8; color: #704a00; }
+        .offer strong { display: block; color: #202124; margin-bottom: 4px; } .menu-title { margin: 25px 16px 8px; font-size: 20px; }
+        .item { display: flex; gap: 13px; margin: 0 16px; padding: 17px 0; border-bottom: 1px solid #eeeeee; }
+        .item-copy { flex: 1; } .tag { margin: 0 0 6px; color: #ed6c02; font-size: 12px; font-weight: 700; } h2 { font-size: 17px; margin: 0 0 7px; }
+        .description { color: #697078; font-size: 13px; line-height: 1.42; margin: 0 0 11px; } .price { font-weight: 700; }
+        .food-image { width: 116px; height: 110px; border-radius: 10px; object-fit: cover; }
+        .add { width: 100%; margin-top: 8px; border: 1px solid #ef5a22; border-radius: 6px; padding: 8px; color: #e64b16; background: white; font-weight: 700; cursor: pointer; }
+        .cart { position: sticky; bottom: 0; display: flex; justify-content: space-between; align-items: center; padding: 14px 17px; color: #fff; background: #167c45; box-shadow: 0 -3px 12px #0002; }
+        .cart span { display: block; font-size: 12px; opacity: .95; } .cart strong { font-size: 16px; } .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <main class="app">
+        <section class="hero">
+            <button class="back" aria-label="Go back" onclick="history.back()">‹</button>
+            <div class="hero-text"><h1>{{ restaurant.name }}</h1><p>{{ restaurant.cuisines }}</p></div>
+        </section>
+        <div class="facts"><span class="rating">★ {{ restaurant.rating }} rating</span><span>{{ restaurant.reviews }}</span><span>{{ restaurant.delivery_time }}</span><span>{{ restaurant.distance }}</span></div>
+        <aside class="offer"><strong>50% off up to ₹200</strong>Apply coupon code <b>APPLY</b></aside>
+        <h2 class="menu-title">Recommended</h2>
+        {% for item in menu_items %}
+        <article class="item">
+            <div class="item-copy"><p class="tag">{{ item.tag }}</p><h2>{{ item.name }}</h2><p class="description">{{ item.description }}</p><div class="price">₹{{ item.price }}</div></div>
+            <div><img class="food-image" src="{% static item.image %}" alt="{{ item.name }}"><button class="add" data-name="{{ item.name }}" data-price="{{ item.price }}">ADD</button></div>
+        </article>
+        {% endfor %}
+        <div id="cart" class="cart hidden"><div><strong id="cart-count">0 items</strong><span id="cart-total">₹0</span></div><strong>View Cart →</strong></div>
+    </main>
+    <script>
+        let count = 0, total = 0;
+        document.querySelectorAll('.add').forEach(button => button.addEventListener('click', () => {
+            count += 1; total += Number(button.dataset.price);
+            document.getElementById('cart-count').textContent = `${count} item${count === 1 ? '' : 's'}`;
+            document.getElementById('cart-total').textContent = `₹${total}`;
+            document.getElementById('cart').classList.remove('hidden');
+            button.textContent = 'ADDED';
+        }));
+    </script>
+</body>
+</html>
