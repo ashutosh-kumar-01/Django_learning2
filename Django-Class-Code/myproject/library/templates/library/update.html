@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Update Book</title></head>
+<body>
+    <h2>Update Publication Year</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p>Book: {{ book.title }}</p>
+        {% if error %}<p style="color: #b00020">{{ error }}</p>{% endif %}
+        <label for="year">Publication year</label>
+        <input id="year" type="number" name="year" min="1" value="{{ book.publication_year }}" required>
+        <button type="submit">Update</button>
+    </form>
+    <p><a href="{% url 'library:book_list' %}">Back to books</a></p>
+</body>
+</html>
